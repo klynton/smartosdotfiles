@@ -1,11 +1,15 @@
 # Add `~/bin` to the `$PATH`
-if $(uname -v) = "joyent_20130322T181205Z"; then
+if [ "$(uname -v)"="joyent_20130322T181205Z" ]; then
     export PATH="/opt/local/gnu/bin:$PATH"
     export PATH="/opt/local/bin:$PATH"
     export PATH="/opt/local/sbin:$PATH"
     export PATH="/usr/bin:$PATH"
     export PATH="/usr/sbin:$PATH"
-else
+elif [ "$(uname -v)"="Darwin" ]; then
+    export PATH="/usr/local/bin:$PATH"
+    export PATH="/usr/local/sbin:$PATH"
+    export PATH="$HOME/bin:$PATH"
+else 
     export PATH="/usr/local/bin:$PATH"
     export PATH="/usr/local/sbin:$PATH"
     export PATH="$HOME/bin:$PATH"
