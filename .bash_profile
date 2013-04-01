@@ -1,5 +1,5 @@
 # Add `~/bin` to the `$PATH`
-if [ $(uname -v) == "joyent_20130322T181205Z" ]; then
+if [ $(uname -v) = "joyent_20130322T181205Z" ]; then
     export PATH="/opt/local/gnu/bin:$PATH"
     export PATH="/opt/local/bin:$PATH"
     export PATH="/opt/local/sbin:$PATH"
