@@ -1,11 +1,3 @@
-# Add `~/bin` to the `$PATH`
-
-export PATH="/opt/local/gnu/bin:$PATH"
-export PATH="/opt/local/bin:$PATH"
-export PATH="/opt/local/sbin:$PATH"
-export PATH="/usr/bin:$PATH"
-export PATH="/usr/sbin:$PATH"
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -40,4 +32,22 @@ complete -W "NSGlobalDomain" defaults
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
+FTPMODE=auto
+MAIL=/usr/mail/${LOGNAME:?}
+MANPATH=/opt/local/gcc47/man:/opt/local/java/sun6/man:/opt/local/lib/perl5/man:/opt/local/lib/perl5/vendor_perl/man:/opt/local/man:/usr/share/man
+PAGER=less
+PATH=/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
+
+export FTPMODE MAIL MANPATH PAGER PATH
+
+# hook man with groff properly
+if [ -x /opt/local/bin/groff ]; then
+  alias man='TROFF="groff -T ascii" TCAT="cat" PAGER="less -is" /usr/bin/man -T -mandoc'
+fi
+
+# help ncurses programs determine terminal size
+export COLUMNS LINES
+
+HOSTNAME=`/usr/bin/hostname`
+HISTSIZE=1000
 
