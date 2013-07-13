@@ -2,14 +2,21 @@
 # Shamelessly copied from https://github.com/gf3/dotfiles
 # Screenshot: http://i.imgur.com/s0Blh.png
 
-case "$TERM" in
-  screen)
-    export TERM=xterm-color
-    ;;
-  screen-256color)
-    export TERM=xterm-color
-    ;;
-esac
+# Grabbed from Joyent's root user's .bashrc. This doesn't actually
+# work with screen or tmux because of this error:
+# screen: "Cannot find terminfo entry for 'xterm-256color'."
+# tmux: "open terminal failed: missing or unsuitable terminal: xterm-256color"
+
+#case "$TERM" in
+#  screen)
+#    export TERM=xterm-color
+#    ;;
+#  screen-256color)
+#    export TERM=xterm-color
+#    ;;
+#esac
+
+export TERM=xterm-color
 
 if tput setaf 1 &> /dev/null; then
 	tput sgr0
